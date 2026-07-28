@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260728-05-94d8f20"}');</script><script src="/_sdk/a27874207e105461.telemetry_sdk.js" integrity="sha512-wgI5N9F7oA2h3vH+benMYIv4wGqTct4nKWakqgvfgRyBLmfYq8q/fi6gkfWKd2hMsyN+VQ/qOAOpxybwkcoxlA=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angie’s Reading Dashboard</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&amp;family=DM+Sans:wght@400;500;600;700;800&amp;family=Lustria&amp;family=Shrikhand&amp;display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&amp;family=DM+Sans:wght@400;500;600;700;800&amp;family=Lustria&amp;family=Shrikhand&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/935a53bc2e11fb8d.data_sdk.js" integrity="sha512-qr2oyPnEys1WebcOABaRh6hG77r5PWpqeWW6JTKbRJqly/INsfBi31CVNlTmHqjgeLpkVmmHZJUdxSx/32tOFQ=="></script>
+  <style>
+    :root { --burgundy:#7B1A2C; --rose:#B53A4A; --coral:#D85C62; --blush:#FDDEDE; --cream:#FFF7F2; --cocoa:#4A2B2B; --wood:#8c3d3d; }
+    * { box-sizing:border-box; }
+    html { background:var(--blush); }
+    body { font-family:"DM Sans",sans-serif; color:var(--cocoa); overflow-x:hidden; opacity:0; transform:translateY(8px); transition:opacity .42s ease,transform .42s ease; }
+    body.is-ready { opacity:1; transform:translateY(0); }
+    body.is-loading { pointer-events:none; }
+    .shelf-row { contain:layout paint; }
+    #summary-panel { position:fixed; z-index:20; width:min(290px,calc(100vw - 24px)); pointer-events:none; }
+    #summary-panel.hidden { visibility:hidden; opacity:0; }
+    #summary-panel:not(.hidden) { visibility:visible; opacity:1; }
+    #summary-panel .note-card { pointer-events:auto; }
+    #summary-panel.is-anchored { transform-origin:center left; }
+    #summary-panel .summary-copy { font-size:.88rem; line-height:1.45; }
+    #add-panel { min-height:330px; }
+    #add-panel.hidden { visibility:hidden; }
+    #add-panel:not(.hidden) { visibility:visible; }
+    .reading-wall { background-image:radial-gradient(circle at 10% 14%,rgba(181,58,74,.15) 0 2px,transparent 2.8px),radial-gradient(circle at 89% 79%,rgba(123,26,44,.12) 0 2px,transparent 2.8px); background-size:31px 31px,43px 43px; }
+    .headline { font-family:"Shrikhand",serif; text-shadow:3px 4px 0 rgba(255,247,242,.85); }
+    .rule { height:1px; background:linear-gradient(to right,transparent,rgba(181,58,74,.5),transparent); }
+    .bookshelf { position:relative; border:1px solid rgba(123,26,44,.16); background:linear-gradient(135deg,rgba(255,247,242,.76),rgba(247,217,214,.54)); box-shadow:0 24px 60px rgba(123,26,44,.16); overflow:hidden; }
+    .bookshelf:before { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg,rgba(123,26,44,.05),transparent 15%,transparent 85%,rgba(123,26,44,.05)); }
+    .shelf-row { position:relative; min-height:196px; height:196px; padding:20px 30px 22px; display:flex; align-items:flex-end; gap:5px; overflow-x:auto; scrollbar-width:thin; }
+    .shelf-row:after { content:""; position:absolute; z-index:0; height:19px; left:12px; right:12px; bottom:0; border-radius:4px 4px 12px 12px; background:linear-gradient(#a14c4d 0 28%,#6e292d 32% 60%,#481b24 100%); box-shadow:0 7px 11px rgba(74,43,43,.26); }
+    .shelf-row + .shelf-row { border-top:1px solid rgba(123,26,44,.14); }
+    .book { position:relative; z-index:1; flex:0 0 auto; min-height:118px; width:43px; border:0; border-radius:5px 5px 2px 2px; color:#fff; cursor:pointer; box-shadow:3px 3px 0 rgba(74,43,43,.15), inset 2px 0 rgba(255,255,255,.24), inset -3px 0 rgba(74,43,43,.13); transition:transform .25s ease,filter .25s ease,box-shadow .25s ease; outline-offset:5px; }
+    .book:hover,.book:focus-visible,.book.is-selected { transform:translateY(-13px) rotate(-2deg); box-shadow:7px 9px 14px rgba(74,43,43,.25),inset 2px 0 rgba(255,255,255,.28),inset -3px 0 rgba(74,43,43,.13); z-index:3; }
+    .book-label { writing-mode:vertical-rl; transform:rotate(180deg); font-family:"Arvo",serif; font-size:9px; line-height:1.18; letter-spacing:.035em; height:100%; max-height:100%; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:8px 4px; text-align:left; overflow-wrap:anywhere; word-break:break-word; }
+    .cover-book { width:104px; min-height:146px; display:flex; flex-direction:column; justify-content:space-between; padding:14px 11px; text-align:left; border:4px solid rgba(255,247,242,.8); box-shadow:6px 7px 0 rgba(123,26,44,.18); }
+    .cover-book .cover-title { font-family:"Shrikhand",serif; font-size:18px; line-height:1; }
+    .cover-book .cover-author { font-family:"Lustria",serif; font-size:10px; line-height:1.2; }
+    .bookend { position:relative; z-index:1; color:var(--burgundy); margin:0 8px 3px 0; opacity:.82; }
+    .bookend.right { margin:0 0 3px 8px; }
+    .plant { position:relative; z-index:1; width:58px; height:72px; margin-left:auto; margin-bottom:0; }
+    .plant:before { content:""; position:absolute; bottom:13px; left:16px; width:28px; height:25px; border-radius:5px 5px 11px 11px; background:#a54a4a; box-shadow:inset 0 -5px rgba(74,43,43,.13); }
+    .plant:after { content:"✦"; position:absolute; left:16px; top:-16px; color:#55715c; font-size:44px; transform:rotate(15deg); }
+    .bookshelf.is-reading .book:not(.is-selected) { filter:saturate(.55) brightness(.87); opacity:.48; }
+    .note-card { box-shadow:0 22px 48px rgba(123,26,44,.2); }
+    .note-card.is-open { animation:note-in .32s ease both; }
+    @keyframes note-in { from { opacity:0; transform:translateY(12px) scale(.98) } to { opacity:1; transform:translateY(0) scale(1) } }
+    .new-book { animation:slot-in .48s cubic-bezier(.2,.85,.35,1) both; }
+    @keyframes slot-in { from { opacity:0; transform:translateY(-34px) rotate(8deg) } to { opacity:1; transform:translateY(0) rotate(0) } }
+    .field { border:1px solid rgba(123,26,44,.23); background:rgba(255,255,255,.66); color:var(--cocoa); border-radius:12px; padding:.7rem .8rem; width:100%; outline:none; }
+    .field:focus { border-color:var(--rose); box-shadow:0 0 0 3px rgba(181,58,74,.15); }
+    @media (max-width:640px) { .shelf-row { min-height:174px; height:174px; padding:16px 18px 20px; } .book { min-height:108px; } .cover-book { width:91px; min-height:130px; } }
+  </style>
+  <script src="/_sdk/6030e540d4419216.resizing_sdk.js" type="text/javascript" integrity="sha512-b5KWzyoXsbWP4smq4sftIi6Kts4YVBpBsz0BwCViwbBJkK64a3/Z6ZMdWA+qnplNcXw4mhZeqvQi3mOosiRJdA=="></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full min-h-screen reading-wall" style="background: rgb(253, 222, 222);">
+  <header class="w-full px-5 pt-10 pb-6 sm:px-8 sm:pt-14">
+   <div class="max-w-5xl mx-auto text-center">
+    <p data-template-id="reading-kicker" class="canva-text text-xs font-bold uppercase tracking-[.22em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 13px;">The reading room</p>
+    <h1 data-template-id="reading-title" class="canva-text headline mt-3 leading-[.93]" style="color: rgb(123, 26, 44); font-weight: 400; font-style: normal; font-size: 58px; line-height: 0.95;">Angie’s Reading Dashboard</h1>
+    <p data-template-id="reading-quote" class="canva-text mt-5 font-medium text-xs uppercase tracking-[.08em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 11px;">“Through love, all is possible.” · Sarah J. Maas</p>
+    <div class="flex items-center gap-4 max-w-xl mx-auto mt-7">
+     <div class="rule flex-1"></div><span class="text-[#B53A4A]">✦</span>
+     <div class="rule flex-1"></div>
+    </div>
+   </div>
+  </header>
+  <main class="w-full px-4 pb-14 sm:px-8">
+   <section class="max-w-6xl mx-auto" aria-labelledby="shelf-heading">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-5 px-1">
+     <div>
+      <h2 id="shelf-heading" data-template-id="shelf-heading" class="canva-text font-bold" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 24px;">A shelf of stories that stayed</h2>
+      <p data-template-id="shelf-helper" class="canva-text mt-1 text-sm" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 15px;">Hover, focus, or tap a book to open its reading note.</p>
+     </div><button id="open-add" type="button" data-template-id="open-add-button" class="canva-button inline-flex w-fit items-center gap-2 rounded-full px-5 py-3 shadow-lg transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4" style="background: rgb(123, 26, 44); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Add a book</button>
+    </div>
+    <div id="bookshelf" class="bookshelf rounded-[2rem] p-2 sm:p-4">
+     <div class="shelf-row" aria-label="Featured reads shelf one">
+      <span class="bookend"><i data-lucide="book-open" class="w-8 h-8"></i></span> <button class="book cover-book" data-book="sadie" aria-haspopup="dialog" style="background:#B53A4A"><span class="cover-title">Tomorrow<br>
+         and Tomorrow</span><span class="cover-author">Gabrielle Zevin</span></button> <button class="book" data-book="piranesi" aria-haspopup="dialog" style="background:#40646b"><span class="book-label">PIRANESI · SUSANNA CLARKE</span></button> <button class="book" data-book="demon" aria-haspopup="dialog" style="background:#d06a43;height:141px"><span class="book-label">DEMON COPPERHEAD</span></button> <button class="book" data-book="klara" aria-haspopup="dialog" style="background:#d99b51;height:128px"><span class="book-label">KLARA AND THE SUN</span></button> <button class="book" data-book="martha" aria-haspopup="dialog" style="background:#75495e;height:146px"><span class="book-label">MARTHA · THE KEEPER</span></button>
+      <div class="plant" aria-hidden="true"></div>
+     </div>
+     <div class="shelf-row" aria-label="A second decorative shelf">
+      <button class="book" data-book="piranesi" aria-haspopup="dialog" style="background:#7B1A2C;height:132px"><span class="book-label">A HOUSE OF HALLS</span></button> <button class="book cover-book" data-book="klara" aria-haspopup="dialog" style="background:#e89d77"><span class="cover-title">Klara<br>
+         &amp; the Sun</span><span class="cover-author">Kazuo Ishiguro</span></button> <button class="book" data-book="sadie" aria-haspopup="dialog" style="background:#9b6a51;height:150px"><span class="book-label">CREATIVE LIVES</span></button> <button class="book" data-book="demon" aria-haspopup="dialog" style="background:#547258;height:118px"><span class="book-label">A FIERCE VOICE</span></button> <span class="bookend right"><i data-lucide="heart" class="w-8 h-8"></i></span>
+     </div>
+     <div class="shelf-row" id="collection-shelf" aria-label="Your growing collection shelf">
+      <span class="bookend"><i data-lucide="sparkles" class="w-7 h-7"></i></span>
+      <div id="collection-empty" class="relative z-[1] self-center ml-3">
+       <p data-template-id="empty-collection" class="canva-text text-sm italic" style="color: rgb(123, 26, 44); font-weight: 400; font-style: normal; font-size: 15px;">Your next beloved book belongs right here.</p>
+      </div>
+      <div class="plant" aria-hidden="true"></div>
+     </div>
+    </div>
+    <section id="summary-panel" class="hidden" aria-live="polite">
+     <article data-template-id="summary-card" class="canva-card note-card rounded-[1.25rem] p-4 sm:p-5 border border-white/80" style="background: rgb(255, 247, 242);">
+      <div class="flex items-start justify-between gap-5">
+       <div>
+        <p data-template-id="summary-kicker" class="canva-text text-xs font-bold uppercase tracking-[.17em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 12px;">Reading note</p>
+        <h2 id="summary-title" class="mt-2 font-bold text-2xl text-[#7B1A2C]" style="font-family:Arvo,serif"></h2>
+        <p id="summary-author" class="mt-1 text-sm font-semibold text-[#B53A4A]"></p>
+       </div><button id="close-summary" type="button" data-template-id="close-summary-button" class="canva-button shrink-0 w-10 h-10 rounded-full flex items-center justify-center" aria-label="Close reading note" style="background: rgb(123, 26, 44); color: rgb(255, 255, 255);"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <p id="summary-text" class="summary-copy mt-3" style="font-family:Lustria,serif"></p>
+     </article>
+    </section>
+   </section>
+   <section id="add-panel" class="hidden max-w-3xl mx-auto mt-9" aria-labelledby="add-heading">
+    <div data-template-id="add-panel-card" class="canva-panel rounded-[1.6rem] p-6 sm:p-8 shadow-[0_18px_40px_rgba(123,26,44,.13)]" style="background: rgb(255, 247, 242);">
+     <div class="flex items-start justify-between gap-4">
+      <div>
+       <h2 id="add-heading" data-template-id="add-heading-text" class="canva-text font-bold" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 24px;">Add a new favorite</h2>
+       <p data-template-id="add-helper" class="canva-text mt-1 text-sm" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 15px;">Give it a spine color, then let it find its place on the wall.</p>
+      </div><button id="close-add" type="button" data-template-id="close-add-button" class="canva-button w-9 h-9 rounded-full flex items-center justify-center" aria-label="Close add book form" style="background: rgb(247, 217, 214); color: rgb(123, 26, 44);"><i data-lucide="x" class="w-4 h-4"></i></button>
+     </div>
+     <form id="book-form" class="grid sm:grid-cols-2 gap-4 mt-6">
+      <div><label data-template-id="title-label" class="canva-text block text-sm font-bold mb-1" for="book-title" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 14px;">Book title</label><input id="book-title" class="field" required="" maxlength="80">
+      </div>
+      <div><label data-template-id="author-label" class="canva-text block text-sm font-bold mb-1" for="book-author" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 14px;">Author</label><input id="book-author" class="field" required="" maxlength="80">
+      </div>
+      <div class="sm:col-span-2"><label data-template-id="summary-label" class="canva-text block text-sm font-bold mb-1" for="book-summary" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 14px;">Short synopsis</label><textarea id="book-summary" class="field min-h-24 resize-y" required="" maxlength="350"></textarea>
+      </div>
+      <div><label data-template-id="color-label" class="canva-text block text-sm font-bold mb-1" for="book-color" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 14px;">Spine color</label><input id="book-color" type="color" class="h-11 w-full rounded-xl border border-[#7B1A2C]/20 bg-white p-1" value="#B53A4A">
+      </div>
+      <div class="flex items-end"><button id="save-book" type="submit" data-template-id="save-book-button" class="canva-button w-full rounded-xl px-5 py-3 font-bold transition hover:-translate-y-0.5 disabled:opacity-60" style="background: rgb(181, 58, 74); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Place on shelf</button>
+      </div>
+     </form>
+     <p id="form-status" class="mt-4 text-sm font-semibold" aria-live="polite"></p>
+    </div>
+   </section>
+  </main>
+  <footer class="w-full px-5 pb-9 text-center">
+   <p data-template-id="footer-note" class="canva-text text-xs uppercase tracking-[.16em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 11px;">Made for dog-eared pages and returning favorites</p>
+  </footer>
+  <template id="saved-book-template">
+   <button class="book new-book" aria-haspopup="dialog"><span class="book-label"></span></button>
+  </template>
+  <script src="/_sdk/1b56991da13617fe.editing_sdk.js" integrity="sha512-7QHNPLPvkV/StrSqMG/kmvYbG8mJP4lGjSAmVe52ZYilblz47/1vWJa6sAdgi1w/a7EbAadWwTEJWNjrpiUkfg=="></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      document.body.classList.add("is-loading");
+      lucide.createIcons();
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      requestAnimationFrame(() => {
+        document.body.classList.add("is-ready");
+        setTimeout(() => document.body.classList.remove("is-loading"), 430);
+      });
+      const featured = {
+        sadie:{title:"Tomorrow, and Tomorrow, and Tomorrow",author:"Gabrielle Zevin",summary:"A glittering, tender story about friendship, creative obsession, and the strange ways a shared imaginary world can change a life."},
+        piranesi:{title:"Piranesi",author:"Susanna Clarke",summary:"A dreamlike mystery set in an endless House of tides, statues, and echoing halls—where wonder is both refuge and clue."},
+        demon:{title:"Demon Copperhead",author:"Barbara Kingsolver",summary:"A fiercely funny and deeply felt coming-of-age novel about survival, friendship, and a young voice refusing to disappear."},
+        klara:{title:"Klara and the Sun",author:"Kazuo Ishiguro",summary:"An observant Artificial Friend watches human love and longing with an innocence that makes every small act of care glow."},
+        martha:{title:"Martha",author:"A quiet favorite",summary:"A book kept close for its gentleness: the kind of story where ordinary rituals and attentive kindness become their own magic."}
+      };
+      const shelf = document.getElementById("collection-shelf"), empty = document.getElementById("collection-empty");
+      const bookshelf = document.getElementById("bookshelf"), summaryPanel = document.getElementById("summary-panel");
+      const summaryTitle = document.getElementById("summary-title"), summaryAuthor = document.getElementById("summary-author"), summaryText = document.getElementById("summary-text");
+      const addPanel = document.getElementById("add-panel"), form = document.getElementById("book-form"), save = document.getElementById("save-book"), status = document.getElementById("form-status");
+      let records = [];
+
+      function showSummary(book, source) {
+        document.querySelectorAll(".book").forEach(bookEl => bookEl.classList.remove("is-selected"));
+        if (source) source.classList.add("is-selected");
+        bookshelf.classList.add("is-reading");
+        summaryTitle.textContent = book.title;
+        summaryAuthor.textContent = book.author;
+        summaryText.textContent = book.summary;
+        summaryPanel.classList.remove("hidden");
+        if (source) {
+          // Anchor to the clicked book in viewport coordinates so the note stays attached.
+          requestAnimationFrame(() => {
+            const rect = source.getBoundingClientRect();
+            const gap = 10;
+            const panelWidth = Math.min(290, window.innerWidth - 24);
+            const panelHeight = summaryPanel.offsetHeight;
+            const right = rect.right + gap;
+            const left = rect.left - panelWidth - gap;
+            let panelLeft = right <= window.innerWidth - 12 ? right : left;
+            let panelTop = rect.top + rect.height / 2 - panelHeight / 2;
+            if (panelLeft < 12 || panelLeft > window.innerWidth - panelWidth - 12) {
+              panelLeft = Math.max(12, Math.min(rect.left + rect.width / 2 - panelWidth / 2, window.innerWidth - panelWidth - 12));
+              panelTop = rect.bottom + gap;
+              if (panelTop + panelHeight > window.innerHeight - 12) panelTop = rect.top - panelHeight - gap;
+            }
+            panelTop = Math.max(12, Math.min(panelTop, window.innerHeight - panelHeight - 12));
+            summaryPanel.style.left = `${panelLeft}px`;
+            summaryPanel.style.top = `${panelTop}px`;
+            summaryPanel.classList.add("is-anchored");
+          });
+        }
+        summaryPanel.querySelector(".note-card").classList.remove("is-open");
+        requestAnimationFrame(() => summaryPanel.querySelector(".note-card").classList.add("is-open"));
+      }
+      function closeSummary() {
+        bookshelf.classList.remove("is-reading");
+        document.querySelectorAll(".book").forEach(el => el.classList.remove("is-selected"));
+        summaryPanel.classList.add("hidden");
+        summaryPanel.classList.remove("is-anchored");
+      }
+      document.querySelectorAll("[data-book]").forEach(btn => {
+        btn.addEventListener("click", () => showSummary(featured[btn.dataset.book], btn));
+      });
+      document.getElementById("close-summary").addEventListener("click", closeSummary);
+      document.addEventListener("keydown", e => { if (e.key === "Escape") { closeSummary(); addPanel.classList.add("hidden"); } });
+
+      function updateCollection(data) {
+        records = data;
+        const existing = new Map([...shelf.querySelectorAll("[data-record-id]")].map(el => [el.dataset.recordId, el]));
+        data.forEach(record => {
+          let el = existing.get(record.__backendId);
+          if (!el) {
+            el = document.getElementById("saved-book-template").content.firstElementChild.cloneNode(true);
+            el.dataset.recordId = record.__backendId;
+            shelf.insertBefore(el, shelf.querySelector(".plant"));
+            el.addEventListener("click", () => showSummary(record, el));
+          }
+          el.style.background = record.spine_color || "#B53A4A";
+          const label = el.querySelector(".book-label");
+          label.textContent = (record.title + " · " + record.author).toUpperCase();
+          label.style.fontSize = record.title.length > 42 ? "7px" : record.title.length > 28 ? "8px" : "9px";
+          label.title = `${record.title} · ${record.author}`;
+          existing.delete(record.__backendId);
+        });
+        existing.forEach(el => el.remove());
+        empty.classList.toggle("hidden", data.length > 0);
+      }
+
+      document.getElementById("open-add").addEventListener("click", () => { addPanel.classList.remove("hidden"); document.getElementById("book-title").focus(); });
+      document.getElementById("close-add").addEventListener("click", () => addPanel.classList.add("hidden"));
+      form.addEventListener("submit", async e => {
+        e.preventDefault();
+        if (records.length >= 999) { status.textContent = "Your collection has reached its 999-book shelf limit. Remove a book before adding another."; status.className = "mt-4 text-sm font-semibold text-[#7B1A2C]"; return; }
+        save.disabled = true; status.textContent = "Placing your book on the shelf…"; status.className = "mt-4 text-sm font-semibold text-[#B53A4A]";
+        const result = await window.dataSdk.create({ title:document.getElementById("book-title").value.trim(), author:document.getElementById("book-author").value.trim(), summary:document.getElementById("book-summary").value.trim(), spine_color:document.getElementById("book-color").value });
+        save.disabled = false;
+        if (result.isOk) { form.reset(); document.getElementById("book-color").value="#B53A4A"; status.textContent="Added to your reading wall."; status.className="mt-4 text-sm font-semibold text-[#55715c]"; }
+        else { status.textContent="That book could not be saved. Please try again."; status.className="mt-4 text-sm font-semibold text-[#7B1A2C]"; }
+      });
+      const init = await window.dataSdk.init({ onDataChanged: updateCollection });
+      if (!init.isOk) { status.textContent = "Your collection is unavailable right now. Please refresh and try again."; status.className = "mt-4 text-sm font-semibold text-[#7B1A2C]"; }
+    });
+  </script>
+ 
+</body></html>
