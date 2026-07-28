@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260728-05-94d8f20"}');</script><script src="/_sdk/a27874207e105461.telemetry_sdk.js" integrity="sha512-wgI5N9F7oA2h3vH+benMYIv4wGqTct4nKWakqgvfgRyBLmfYq8q/fi6gkfWKd2hMsyN+VQ/qOAOpxybwkcoxlA=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Reviews &amp; Thoughts</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&amp;family=DM+Sans:wght@400;500;600;700;800&amp;family=Lustria&amp;family=Shrikhand&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose: '#B53A4A',
+            warmred: '#D85C62',
+            blush: '#F7D9D6',
+            cream: '#FFF7F2',
+            cocoa: '#4A2B2B',
+            burgundy: '#7B1A2C',
+            pinkbg: '#FDDEDE'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .page-atmosphere {
+      background-image:
+        radial-gradient(circle at 8% 14%, rgba(181, 58, 74, .10) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 92% 78%, rgba(201, 106, 74, .10) 0 2px, transparent 2.5px);
+      background-size: 30px 30px, 42px 42px;
+    }
+    .editorial-rule {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(181, 58, 74, .45), transparent);
+    }
+    .review-slide {
+      display: none;
+      animation: fadeSlide .42s ease both;
+    }
+    .review-slide.is-active {
+      display: block;
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      animation: reveal .65s ease both;
+    }
+    .reveal-delay { animation-delay: .13s; }
+    .reveal-delay-2 { animation-delay: .24s; }
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .carousel-control:focus-visible,
+    .carousel-dot:focus-visible {
+      outline: 3px solid #7B1A2C;
+      outline-offset: 3px;
+    }
+  </style>
+  <script src="/_sdk/935a53bc2e11fb8d.data_sdk.js" type="text/javascript" integrity="sha512-qr2oyPnEys1WebcOABaRh6hG77r5PWpqeWW6JTKbRJqly/INsfBi31CVNlTmHqjgeLpkVmmHZJUdxSx/32tOFQ=="></script>
+  <script src="/_sdk/6030e540d4419216.resizing_sdk.js" type="text/javascript" integrity="sha512-b5KWzyoXsbWP4smq4sftIi6Kts4YVBpBsz0BwCViwbBJkK64a3/Z6ZMdWA+qnplNcXw4mhZeqvQi3mOosiRJdA=="></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full min-h-screen page-atmosphere" style="background: rgb(253, 222, 222);">
+  <header class="w-full px-5 pt-12 pb-8 sm:px-8 sm:pt-16">
+   <div class="max-w-6xl mx-auto text-center">
+    <p data-template-id="reviews-kicker" class="canva-text reveal text-xs font-bold uppercase tracking-[0.22em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 13px;">The reading room</p>
+    <h1 data-template-id="reviews-title" class="canva-text reveal reveal-delay mt-4 leading-[0.92]" style="color: rgb(123, 26, 44); font-weight: 400; font-style: normal; font-size: 68px; line-height: 0.95;">Book Reviews &amp; Thoughts</h1>
+    <p data-template-id="reviews-subtitle" class="canva-text reveal reveal-delay-2 mt-6 max-w-2xl mx-auto leading-relaxed" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 20px;">A little shelf of reader reflections, lingering lines, and books worth talking about.</p>
+    <div class="mt-9 mx-auto w-full max-w-2xl flex items-center gap-4">
+     <div class="editorial-rule flex-1"></div><span class="text-rose text-sm" aria-hidden="true">✦</span>
+     <div class="editorial-rule flex-1"></div>
+    </div>
+   </div>
+  </header>
+  <main class="w-full px-5 pb-16 sm:px-8 sm:pb-20">
+   <section aria-labelledby="carousel-heading" class="max-w-5xl mx-auto">
+    <div class="flex flex-col items-center text-center mb-7">
+     <h2 id="carousel-heading" data-template-id="carousel-heading" class="canva-text font-bold" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 24px;">A few pages worth keeping</h2>
+     <p data-template-id="carousel-helper" class="canva-text mt-2 text-sm" style="color: rgb(123, 26, 44); font-weight: 400; font-style: normal; font-size: 15px;">Browse the latest notes from the reading pile.</p>
+    </div>
+    <div id="review-carousel" class="relative max-w-3xl mx-auto" tabindex="0" aria-roledescription="carousel" aria-label="Book review carousel">
+     <article class="review-slide is-active" aria-roledescription="slide" aria-label="Review 1 of 4">
+      <div data-template-id="review-1-card" class="canva-card rounded-[2rem] p-7 sm:p-10 shadow-[0_18px_45px_rgba(123,26,44,0.12)] border border-white/80" style="background: rgb(255, 247, 242);">
+       <div class="flex flex-col sm:flex-row sm:items-start gap-6">
+        <div class="w-16 h-16 shrink-0 rounded-2xl bg-[#F7D9D6] flex items-center justify-center text-burgundy"><i data-lucide="book-open" class="w-7 h-7"></i>
+        </div>
+        <div class="flex-1">
+         <p data-template-id="review-1-label" class="canva-text text-xs font-bold uppercase tracking-[0.18em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 12px;">Tender, bright, unforgettable</p>
+         <h3 data-template-id="review-1-title" class="canva-text font-bold mt-3" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 19px;">Tomorrow, and Tomorrow, and Tomorrow</h3>
+         <p data-template-id="review-1-author" class="canva-text mt-1 italic" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 17px;">Gabrielle Zevin</p>
+         <p data-template-id="review-1-stars" class="canva-text mt-5 tracking-[0.12em]" style="color: rgb(216, 92, 98); font-weight: 700; font-style: normal; font-size: 18px;">★★★★★</p>
+         <blockquote data-template-id="review-1-excerpt" class="canva-text mt-5 text-lg sm:text-xl leading-relaxed" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 21px;">“A big-hearted story about friendship, ambition, and the way we keep choosing each other through every version of ourselves.”</blockquote>
+         <div class="mt-7 pt-5 border-t border-[#F7D9D6]">
+          <p data-template-id="review-1-note" class="canva-text text-sm font-semibold" style="color: rgb(181, 58, 74); font-weight: 400; font-style: normal; font-size: 14px;">Angie’s note — read this when you want to feel a little wrecked, then very grateful.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </article>
+     <article class="review-slide" aria-roledescription="slide" aria-label="Review 2 of 4" aria-hidden="true">
+      <div data-template-id="review-2-card" class="canva-card rounded-[2rem] p-7 sm:p-10 shadow-[0_18px_45px_rgba(123,26,44,0.12)] border border-white/80" style="background: rgb(255, 255, 255);">
+       <div class="flex flex-col sm:flex-row sm:items-start gap-6">
+        <div class="w-16 h-16 shrink-0 rounded-2xl bg-[#F7D9D6] flex items-center justify-center text-burgundy"><i data-lucide="feather" class="w-7 h-7"></i>
+        </div>
+        <div class="flex-1">
+         <p data-template-id="review-2-label" class="canva-text text-xs font-bold uppercase tracking-[0.18em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 12px;">A quiet masterpiece</p>
+         <h3 data-template-id="review-2-title" class="canva-text font-bold mt-3" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 19px;">Piranesi</h3>
+         <p data-template-id="review-2-author" class="canva-text mt-1 italic" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 17px;">Susanna Clarke</p>
+         <p data-template-id="review-2-stars" class="canva-text mt-5 tracking-[0.12em]" style="color: rgb(216, 92, 98); font-weight: 700; font-style: normal; font-size: 18px;">★★★★★</p>
+         <blockquote data-template-id="review-2-excerpt" class="canva-text mt-5 text-lg sm:text-xl leading-relaxed" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 21px;">“Strange in the most wonderful way — like wandering through an endless, moonlit museum with the tide at your feet.”</blockquote>
+         <div class="mt-7 pt-5 border-t border-[#F7D9D6]">
+          <p data-template-id="review-2-note" class="canva-text text-sm font-semibold" style="color: rgb(181, 58, 74); font-weight: 400; font-style: normal; font-size: 14px;">Reader thought — I finished it and immediately wanted to begin again from the first page.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </article>
+     <article class="review-slide" aria-roledescription="slide" aria-label="Review 3 of 4" aria-hidden="true">
+      <div data-template-id="review-3-card" class="canva-card rounded-[2rem] p-7 sm:p-10 shadow-[0_18px_45px_rgba(123,26,44,0.12)] border border-white/80" style="background: rgb(255, 247, 242);">
+       <div class="flex flex-col sm:flex-row sm:items-start gap-6">
+        <div class="w-16 h-16 shrink-0 rounded-2xl bg-[#F7D9D6] flex items-center justify-center text-burgundy"><i data-lucide="sparkles" class="w-7 h-7"></i>
+        </div>
+        <div class="flex-1">
+         <p data-template-id="review-3-label" class="canva-text text-xs font-bold uppercase tracking-[0.18em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 12px;">Lush and fiercely human</p>
+         <h3 data-template-id="review-3-title" class="canva-text font-bold mt-3" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 19px;">Demon Copperhead</h3>
+         <p data-template-id="review-3-author" class="canva-text mt-1 italic" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 17px;">Barbara Kingsolver</p>
+         <p data-template-id="review-3-stars" class="canva-text mt-5 tracking-[0.12em]" style="color: rgb(216, 92, 98); font-weight: 700; font-style: normal; font-size: 18px;">★★★★★</p>
+         <blockquote data-template-id="review-3-excerpt" class="canva-text mt-5 text-lg sm:text-xl leading-relaxed" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 21px;">“A voice so vivid and alive that the pages nearly disappear. Difficult, compassionate, and impossible to shake.”</blockquote>
+         <div class="mt-7 pt-5 border-t border-[#F7D9D6]">
+          <p data-template-id="review-3-note" class="canva-text text-sm font-semibold" style="color: rgb(181, 58, 74); font-weight: 400; font-style: normal; font-size: 14px;">Angie’s note — this one asks for your whole heart, and gives you a story that stays there.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </article>
+     <article class="review-slide" aria-roledescription="slide" aria-label="Review 4 of 4" aria-hidden="true">
+      <div data-template-id="review-4-card" class="canva-card rounded-[2rem] p-7 sm:p-10 shadow-[0_18px_45px_rgba(123,26,44,0.12)] border border-white/80" style="background: rgb(255, 255, 255);">
+       <div class="flex flex-col sm:flex-row sm:items-start gap-6">
+        <div class="w-16 h-16 shrink-0 rounded-2xl bg-[#F7D9D6] flex items-center justify-center text-burgundy"><i data-lucide="heart" class="w-7 h-7"></i>
+        </div>
+        <div class="flex-1">
+         <p data-template-id="review-4-label" class="canva-text text-xs font-bold uppercase tracking-[0.18em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 12px;">Soft sci-fi for the soul</p>
+         <h3 data-template-id="review-4-title" class="canva-text font-bold mt-3" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 19px;">Klara and the Sun</h3>
+         <p data-template-id="review-4-author" class="canva-text mt-1 italic" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 17px;">Kazuo Ishiguro</p>
+         <p data-template-id="review-4-stars" class="canva-text mt-5 tracking-[0.12em]" style="color: rgb(216, 92, 98); font-weight: 700; font-style: normal; font-size: 18px;">★★★★☆</p>
+         <blockquote data-template-id="review-4-excerpt" class="canva-text mt-5 text-lg sm:text-xl leading-relaxed" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 21px;">“Delicate, unsettling, and full of questions about love, devotion, and what it means to be seen.”</blockquote>
+         <div class="mt-7 pt-5 border-t border-[#F7D9D6]">
+          <p data-template-id="review-4-note" class="canva-text text-sm font-semibold" style="color: rgb(181, 58, 74); font-weight: 400; font-style: normal; font-size: 14px;">Reader thought — spare and tender, with the kind of ending that keeps unfolding afterwards.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </article>
+     <div class="mt-7 flex items-center justify-center gap-4"><button id="previous-review" data-template-id="previous-button" class="canva-button carousel-control w-11 h-11 rounded-full flex items-center justify-center transition-transform hover:-translate-x-1" type="button" aria-label="Show previous review" style="background: rgb(123, 26, 44); color: rgb(255, 255, 255);"> <i data-lucide="arrow-left" class="w-5 h-5" aria-hidden="true"></i> </button>
+      <div class="flex items-center gap-2" role="tablist" aria-label="Select a review"><button class="carousel-dot w-2.5 h-2.5 rounded-full bg-burgundy transition-all" type="button" aria-label="Show review 1" aria-selected="true" data-slide="0"></button> <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-rose/30 transition-all" type="button" aria-label="Show review 2" aria-selected="false" data-slide="1"></button> <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-rose/30 transition-all" type="button" aria-label="Show review 3" aria-selected="false" data-slide="2"></button> <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-rose/30 transition-all" type="button" aria-label="Show review 4" aria-selected="false" data-slide="3"></button>
+      </div><button id="next-review" data-template-id="next-button" class="canva-button carousel-control w-11 h-11 rounded-full flex items-center justify-center transition-transform hover:translate-x-1" type="button" aria-label="Show next review" style="background: rgb(123, 26, 44); color: rgb(255, 255, 255);"> <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i> </button>
+     </div>
+     <p id="slide-status" class="sr-only" aria-live="polite"></p>
+    </div>
+   </section>
+   <section class="max-w-6xl mx-auto mt-16 grid lg:grid-cols-[1.15fr_.85fr] gap-6 items-stretch">
+    <article data-template-id="quote-panel" class="canva-panel rounded-[2rem] overflow-hidden shadow-[0_15px_35px_rgba(123,26,44,0.10)]" style="background: rgb(255, 255, 255);">
+     <div class="grid sm:grid-cols-[.75fr_1.25fr] h-full"><img data-template-id="reading-image" class="canva-image w-full h-56 sm:h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/12155600/pexels-photo-12155600.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Warm and inviting room with a leather armchair, floor lamp, and art-filled walls.">
+      <div class="p-8 sm:p-10 flex flex-col justify-center">
+       <p class="text-rose mb-4" aria-hidden="true">“</p>
+       <blockquote data-template-id="featured-quote" class="canva-text leading-relaxed" style="color: rgb(123, 26, 44); font-weight: 400; font-style: normal; font-size: 25px;">“Books are a uniquely portable magic.”</blockquote>
+       <p data-template-id="featured-attribution" class="canva-text mt-6 text-sm font-bold uppercase tracking-[0.13em]" style="color: rgb(181, 58, 74); font-weight: 400; font-style: normal; font-size: 12px;">— Stephen King</p>
+      </div>
+     </div>
+    </article>
+    <aside data-template-id="moods-panel" class="canva-panel rounded-[2rem] p-8 sm:p-10 shadow-[0_15px_35px_rgba(123,26,44,0.10)]" style="background: rgb(181, 58, 74);">
+     <p data-template-id="moods-kicker" class="canva-text text-xs font-bold uppercase tracking-[0.18em]" style="color: rgb(253, 222, 222); font-weight: 700; font-style: normal; font-size: 12px;">Currently craving</p>
+     <h2 data-template-id="moods-title" class="canva-text font-bold mt-3" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 24px;">Reading moods</h2>
+     <div class="mt-7 flex flex-wrap gap-2.5"><span data-template-id="mood-tag-1" class="canva-tag rounded-full px-4 py-2 text-sm font-semibold" style="background: rgb(253, 222, 222); color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 16px;">Tender</span> <span data-template-id="mood-tag-2" class="canva-tag rounded-full px-4 py-2 text-sm font-semibold" style="background: rgb(255, 247, 242); color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 16px;">Atmospheric</span> <span data-template-id="mood-tag-3" class="canva-tag rounded-full px-4 py-2 text-sm font-semibold" style="background: rgb(247, 217, 214); color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 16px;">Big feelings</span> <span data-template-id="mood-tag-4" class="canva-tag rounded-full px-4 py-2 text-sm font-semibold" style="background: rgb(255, 247, 242); color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 16px;">Literary</span> <span data-template-id="mood-tag-5" class="canva-tag rounded-full px-4 py-2 text-sm font-semibold" style="background: rgb(253, 222, 222); color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 16px;">A little strange</span>
+     </div>
+    </aside>
+   </section>
+   <section data-template-id="thoughts-callout" class="canva-banner max-w-6xl mx-auto mt-6 rounded-[2rem] px-7 py-9 sm:px-10 sm:py-11 text-center shadow-[0_15px_35px_rgba(123,26,44,0.10)]" style="background: rgb(123, 26, 44); color: rgb(255, 255, 255);"><i data-lucide="message-circle-heart" class="w-7 h-7 mx-auto mb-4" aria-hidden="true"></i>
+    <h2 data-template-id="callout-title" class="canva-text font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 24px;">Every book leaves something behind.</h2>
+    <p data-template-id="callout-copy" class="canva-text mt-3 max-w-xl mx-auto leading-relaxed" style="color: rgb(253, 222, 222); font-weight: 400; font-style: normal; font-size: 18px;">Keep a line, a feeling, or a question from your latest read. The best reading lives on long after the final page.</p>
+   </section>
+  </main>
+  <footer class="w-full px-5 pb-10 text-center">
+   <p data-template-id="footer-note" class="canva-text text-xs uppercase tracking-[0.16em]" style="color: rgb(181, 58, 74); font-weight: 700; font-style: normal; font-size: 11px;">Made for slow mornings and well-loved bookmarks</p>
+  </footer>
+  <script src="/_sdk/1b56991da13617fe.editing_sdk.js" integrity="sha512-7QHNPLPvkV/StrSqMG/kmvYbG8mJP4lGjSAmVe52ZYilblz47/1vWJa6sAdgi1w/a7EbAadWwTEJWNjrpiUkfg=="></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+
+      const slides = Array.from(document.querySelectorAll('.review-slide'));
+      const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+      const status = document.getElementById('slide-status');
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        currentSlide = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, slideIndex) => {
+          const active = slideIndex === currentSlide;
+          slide.classList.toggle('is-active', active);
+          slide.setAttribute('aria-hidden', String(!active));
+        });
+
+        dots.forEach((dot, dotIndex) => {
+          const active = dotIndex === currentSlide;
+          dot.setAttribute('aria-selected', String(active));
+          dot.classList.toggle('bg-burgundy', active);
+          dot.classList.toggle('bg-rose/30', !active);
+          dot.classList.toggle('scale-125', active);
+        });
+
+        status.textContent = 'Showing review ' + (currentSlide + 1) + ' of ' + slides.length;
+      }
+
+      document.getElementById('previous-review').addEventListener('click', () => showSlide(currentSlide - 1));
+      document.getElementById('next-review').addEventListener('click', () => showSlide(currentSlide + 1));
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => showSlide(Number(dot.dataset.slide)));
+      });
+
+      document.getElementById('review-carousel').addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          showSlide(currentSlide - 1);
+        }
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          showSlide(currentSlide + 1);
+        }
+      });
+
+      showSlide(0);
+    });
+  </script>
+ 
+</body></html>
