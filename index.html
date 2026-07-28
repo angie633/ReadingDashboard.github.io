@@ -1,1 +1,177 @@
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260728-05-94d8f20"}');</script><script src="/_sdk/a27874207e105461.telemetry_sdk.js" integrity="sha512-wgI5N9F7oA2h3vH+benMYIv4wGqTct4nKWakqgvfgRyBLmfYq8q/fi6gkfWKd2hMsyN+VQ/qOAOpxybwkcoxlA=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angie's Reading Dashboard</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose: '#B53A4A',
+            warmred: '#D85C62',
+            terra: '#C96A4A',
+            blush: '#F7D9D6',
+            cream: '#FFF7F2',
+            cocoa: '#4A2B2B',
+            pinkbg: '#FDDEDE'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    .bar { transition: height 0.4s ease; }
+  </style>
+  <script src="/_sdk/935a53bc2e11fb8d.data_sdk.js" type="text/javascript" integrity="sha512-qr2oyPnEys1WebcOABaRh6hG77r5PWpqeWW6JTKbRJqly/INsfBi31CVNlTmHqjgeLpkVmmHZJUdxSx/32tOFQ=="></script>
+  <script src="/_sdk/6030e540d4419216.resizing_sdk.js" type="text/javascript" integrity="sha512-b5KWzyoXsbWP4smq4sftIi6Kts4YVBpBsz0BwCViwbBJkK64a3/Z6ZMdWA+qnplNcXw4mhZeqvQi3mOosiRJdA=="></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen w-full" style="background: rgb(253, 222, 222);">
+  <!-- Hero Landing Section -->
+  <section class="w-full px-6 py-16 md:py-24 flex flex-col items-center text-center">
+   <h1 data-template-id="hero-title" class="canva-text font-black leading-tight max-w-3xl" style="color: rgb(123, 26, 44); font-weight: 400; font-style: normal; font-size: 80px;">Angie's Reading Dashboard</h1>
+   <p data-template-id="hero-quote" class="canva-text mt-8 tracking-wide uppercase text-sm" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 21px;">"Through love, all is possible." — Sarah J. Maas</p>
+   <div class="mt-8 w-full max-w-md rounded-lg overflow-hidden shadow-lg">
+    <img data-template-id="hero-image" class="canva-image w-full h-64 object-cover" loading="lazy" src="https://images.pexels.com/photos/12155600/pexels-photo-12155600.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Warm and inviting room with a leather armchair, floor lamp, and art-filled walls.">
+   </div><a href="#dashboard" data-template-id="hero-cta" class="canva-text mt-8 inline-block underline underline-offset-4 font-semibold tracking-wide uppercase text-sm hover:opacity-70 transition-opacity" style="color: rgb(123, 26, 44); font-weight: 700; font-style: normal; font-size: 13px;">Get Started</a>
+  </section><!-- Dashboard Section -->
+  <main id="dashboard" class="w-full px-6 md:px-12 pb-12">
+   <div class="max-w-6xl mx-auto space-y-8">
+    <div class="flex gap-2 flex-wrap">
+     <button class="tab-btn active px-4 py-2 rounded-full text-sm font-medium bg-rose text-white" data-filter="month">This Month</button> <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium bg-blush text-[#b84a5a]" data-filter="year">This Year</button> <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium bg-blush text-[#b84a5a]" data-filter="all">All Time</button>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+     <div data-template-id="card-books" class="canva-card rounded-2xl p-6 shadow-sm" style="background: rgb(255, 255, 255);">
+      <div class="flex items-center gap-3 mb-2"><i data-lucide="book-open" class="w-5 h-5 text-warmred"></i><span data-template-id="card-books-label" class="canva-text text-sm font-medium opacity-70" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 19px;">Total Books Read</span>
+      </div>
+      <p class="text-3xl font-bold text-[#b84a5a]">12</p>
+     </div>
+     <div data-template-id="card-pages" class="canva-card rounded-2xl p-6 shadow-sm" style="background: rgb(255, 255, 255);">
+      <div class="flex items-center gap-3 mb-2"><i data-lucide="file-text" class="w-5 h-5 text-terra"></i><span data-template-id="card-pages-label" class="canva-text text-sm font-medium opacity-70" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 19px;">Total Pages</span>
+      </div>
+      <p class="text-3xl font-bold text-[#b84a5a]">3,847</p>
+     </div>
+     <div data-template-id="card-ratings" class="canva-card rounded-2xl p-6 shadow-sm" style="background: rgb(255, 255, 255);">
+      <div class="flex items-center gap-3 mb-2"><i data-lucide="star" class="w-5 h-5 text-warmred"></i><span data-template-id="card-ratings-label" class="canva-text text-sm font-medium opacity-70" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 19px;">Current Read(s)</span>
+      </div>
+      <p class="text-3xl font-bold text-[#b84a5a]">11</p>
+     </div>
+     <div data-template-id="card-permonth" class="canva-card rounded-2xl p-6 shadow-sm" style="background: rgb(255, 255, 255);">
+      <div class="flex items-center gap-3 mb-2"><i data-lucide="trending-up" class="w-5 h-5 text-terra"></i><span data-template-id="card-permonth-label" class="canva-text text-sm font-medium opacity-70" style="color: rgb(184, 74, 90); font-weight: 400; font-style: normal; font-size: 19px;">Books / Month</span>
+      </div>
+      <p class="text-3xl font-bold text-[#b84a5a]">1.7</p>
+     </div>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6">
+     <div data-template-id="chart-panel" class="canva-card lg:col-span-2 rounded-2xl p-6 shadow-sm" style="background: rgb(255, 255, 255);">
+      <div class="flex items-start justify-between gap-4 mb-5">
+       <div>
+        <h2 data-template-id="chart-title" class="canva-text font-semibold" style="color: rgb(184, 74, 90); font-weight: 700; font-style: normal; font-size: 24px;">Books Read Per Month</h2>
+        <p class="text-xs text-[#b84a5a] opacity-60 mt-1">A cozy year in books</p>
+       </div>
+       <div class="flex items-center gap-2 text-xs text-[#b84a5a] opacity-70">
+        <span class="w-2.5 h-2.5 rounded-full bg-rose"></span><span>Books finished</span>
+       </div>
+      </div>
+      <div class="flex gap-3 sm:gap-4">
+       <div class="h-56 pb-7 flex flex-col justify-between items-end text-[10px] text-cocoa opacity-55" aria-hidden="true">
+        <span>10</span><span>8</span><span>6</span><span>4</span><span>2</span><span>0</span>
+       </div>
+       <div class="relative flex-1 h-56 border-l border-b border-rose/30" role="img" aria-label="Bar chart showing books read per month from January through December">
+        <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+         <span class="border-t border-blush"></span><span class="border-t border-blush"></span><span class="border-t border-blush"></span><span class="border-t border-blush"></span><span class="border-t border-blush"></span><span></span>
+        </div>
+        <div class="relative h-full px-1 sm:px-2 flex items-end justify-between gap-1 sm:gap-2">
+         <div class="h-[40%] flex-1 rounded-t-md bg-warmred" title="January: 4 books"></div>
+         <div class="h-[60%] flex-1 rounded-t-md bg-rose" title="February: 6 books"></div>
+         <div class="h-[30%] flex-1 rounded-t-md bg-terra" title="March: 3 books"></div>
+         <div class="h-[80%] flex-1 rounded-t-md bg-rose" title="April: 8 books"></div>
+         <div class="h-[50%] flex-1 rounded-t-md bg-warmred" title="May: 5 books"></div>
+         <div class="h-[70%] flex-1 rounded-t-md bg-rose" title="June: 7 books"></div>
+         <div class="h-[90%] flex-1 rounded-t-md bg-terra" title="July: 9 books"></div>
+         <div class="h-[60%] flex-1 rounded-t-md bg-rose" title="August: 6 books"></div>
+         <div class="h-[40%] flex-1 rounded-t-md bg-warmred" title="September: 4 books"></div>
+         <div class="h-[70%] flex-1 rounded-t-md bg-rose" title="October: 7 books"></div>
+         <div class="h-[50%] flex-1 rounded-t-md bg-terra" title="November: 5 books"></div>
+         <div class="h-[80%] flex-1 rounded-t-md bg-warmred" title="December: 8 books"></div>
+        </div>
+        <div class="absolute -bottom-7 inset-x-0 px-1 sm:px-2 flex justify-between gap-1 sm:gap-2 text-[9px] sm:text-[10px] text-cocoa opacity-65">
+         <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+        </div>
+       </div>
+      </div>
+      <div class="mt-3 text-center text-[10px] uppercase tracking-widest text-cocoa opacity-50">
+       Months
+      </div>
+     </div>
+     <div data-template-id="tbr-panel" class="canva-card rounded-2xl p-6 shadow-sm" style="background: rgb(184, 74, 90);">
+      <h2 data-template-id="tbr-title" class="canva-text font-semibold mb-4" style="color: rgb(253, 222, 222); font-weight: 400; font-style: normal; font-size: 24px;">To Be Read</h2>
+      <ul id="tbr-list" class="space-y-3 text-sm text-cocoa">
+       <li class="flex justify-between items-center py-2 border-b border-blush"><span>The Goldfinch</span><button onclick="this.parentElement.remove()" class="text-warmred hover:text-rose"><i data-lucide="x" class="w-4 h-4"></i></button></li>
+       <li class="flex justify-between items-center py-2 border-b border-blush"><span>Piranesi</span><button onclick="this.parentElement.remove()" class="text-warmred hover:text-rose"><i data-lucide="x" class="w-4 h-4"></i></button></li>
+       <li class="flex justify-between items-center py-2 border-b border-blush"><span>Circe</span><button onclick="this.parentElement.remove()" class="text-warmred hover:text-rose"><i data-lucide="x" class="w-4 h-4"></i></button></li>
+      </ul>
+      <form id="tbr-form" class="mt-4 flex gap-2">
+       <input type="text" id="tbr-input" placeholder="Add a book..." class="flex-1 px-3 py-2 rounded-lg border border-blush bg-cream text-cocoa text-sm focus:outline-none focus:ring-2 focus:ring-warmred"> <button type="submit" class="px-3 py-2 rounded-lg bg-warmred text-white text-sm font-medium hover:bg-rose"><i data-lucide="plus" class="w-4 h-4"></i></button>
+      </form>
+     </div>
+    </div>
+    <section>
+     <h2 data-template-id="recent-title" class="canva-text font-semibold mb-4" style="color: rgb(184, 74, 90); font-weight: 700; font-style: normal; font-size: 24px;">Recent Reads</h2>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div data-template-id="read-1" class="canva-card rounded-2xl p-5 shadow-sm" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="read-1-title" class="canva-text font-semibold" style="color: rgb(74, 43, 43); font-weight: 600; font-style: normal; font-size: 19px;">Tomorrow, and Tomorrow, and Tomorrow</h3>
+       <p data-template-id="read-1-author" class="canva-text text-sm opacity-70 mt-1" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Gabrielle Zevin</p>
+       <div class="flex justify-between items-center mt-3 text-sm"><span class="text-cocoa opacity-60">342 pages</span><span class="text-warmred font-medium">★★★★☆</span>
+       </div>
+      </div>
+      <div data-template-id="read-2" class="canva-card rounded-2xl p-5 shadow-sm" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="read-2-title" class="canva-text font-semibold" style="color: rgb(74, 43, 43); font-weight: 600; font-style: normal; font-size: 19px;">Demon Copperhead</h3>
+       <p data-template-id="read-2-author" class="canva-text text-sm opacity-70 mt-1" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Barbara Kingsolver</p>
+       <div class="flex justify-between items-center mt-3 text-sm"><span class="text-cocoa opacity-60">281 pages</span><span class="text-warmred font-medium">★★★★★</span>
+       </div>
+      </div>
+      <div data-template-id="read-3" class="canva-card rounded-2xl p-5 shadow-sm" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="read-3-title" class="canva-text font-semibold" style="color: rgb(74, 43, 43); font-weight: 600; font-style: normal; font-size: 19px;">Klara and the Sun</h3>
+       <p data-template-id="read-3-author" class="canva-text text-sm opacity-70 mt-1" style="color: rgb(74, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Kazuo Ishiguro</p>
+       <div class="flex justify-between items-center mt-3 text-sm"><span class="text-cocoa opacity-60">198 pages</span><span class="text-warmred font-medium">★★★★☆</span>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div>
+  </main>
+  <script src="/_sdk/1b56991da13617fe.editing_sdk.js" integrity="sha512-7QHNPLPvkV/StrSqMG/kmvYbG8mJP4lGjSAmVe52ZYilblz47/1vWJa6sAdgi1w/a7EbAadWwTEJWNjrpiUkfg=="></script>
+  <script>
+    lucide.createIcons();
 
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('bg-rose', 'text-white', 'active');
+          b.classList.add('bg-blush', 'text-cocoa');
+        });
+        btn.classList.remove('bg-blush', 'text-cocoa');
+        btn.classList.add('bg-rose', 'text-white', 'active');
+      });
+    });
+
+    document.getElementById('tbr-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('tbr-input');
+      const val = input.value.trim();
+      if (!val) return;
+      const li = document.createElement('li');
+      li.className = 'flex justify-between items-center py-2 border-b border-blush';
+      li.innerHTML = `<span>${val}</span><button onclick="this.parentElement.remove()" class="text-warmred hover:text-rose"><i data-lucide="x" class="w-4 h-4"></i></button>`;
+      document.getElementById('tbr-list').appendChild(li);
+      input.value = '';
+      lucide.createIcons();
+    });
+  </script>
+ 
+</body></html>
